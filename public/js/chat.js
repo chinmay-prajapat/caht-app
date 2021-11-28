@@ -1,8 +1,12 @@
 const socket = io()
 const btn = document.querySelector("#increment")
-socket.on("countUpdated", (count) => {
-  console.log("The count ", count)
-})
-btn.addEventListener("click", () => {
-  socket.emit("increment")
+const input = document
+  .querySelector("#message-form")
+  .addEventListener("submit", (e) => {
+    e.preventDefault()
+    const message = document.querySelector("input").value
+    socket.emit("sendMessage", message)
+  })
+socket.on("message", (message) => {
+  console.log(message)
 })
