@@ -26,8 +26,9 @@ io.on("connection", (socket) => {
     callback()
   })
 
-  socket.on("sendLocation", (data) => {
+  socket.on("sendLocation", (data, callback) => {
     io.emit("message", data)
+    callback()
   })
 
   socket.on("disconnect", () => {

@@ -26,6 +26,9 @@ document.querySelector("#send-location").addEventListener("click", () => {
     socket.emit(
       "sendLocation",
       `https://google.com/maps?q=${latitude},${longitude}`,
+      () => {
+        console.log("Location Delivered")
+      },
     )
   })
 })
