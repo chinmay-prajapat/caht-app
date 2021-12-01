@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
   })
 
   socket.on("sendLocation", (data, callback) => {
-    io.emit("locationMessage", data)
+    io.emit("locationMessage", generateMessage(data))
     callback()
   })
 
