@@ -12,7 +12,10 @@ const messageTemplate = document.querySelector("#message-template").innerHTML
 
 socket.on("message", (message) => {
   console.log(message)
-  const html = Mustache.render(messageTemplate, { message: message.text })
+  const html = Mustache.render(messageTemplate, {
+    message: message.text,
+    createdAt: message.createdAt,
+  })
   $messages.insertAdjacentHTML("beforeend", html)
 })
 
