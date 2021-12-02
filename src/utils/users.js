@@ -35,3 +35,35 @@ addUser({
   username: "Chinmay",
   room: "India",
 })
+addUser({
+  id: 23,
+  username: "Gaurav",
+  room: "India",
+})
+addUser({
+  id: 24,
+  username: "Rajesh",
+  room: "India",
+})
+addUser({
+  id: 25,
+  username: "Amit",
+  room: "India",
+})
+
+const getUser = (id) => {
+  const user = users.find((user) => user.id === id)
+
+  return user
+}
+const getUsers = (room) => {
+  const user = users.filter((user) => {
+    user.room === room
+  })
+  if (!user) {
+    return "Wrong names"
+  }
+  return user
+}
+// console.log(getUser(22))
+console.log(getUsers("indi", "chinmay"))
