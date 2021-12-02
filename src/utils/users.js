@@ -30,40 +30,23 @@ const removeUser = (id) => {
   }
 }
 
-addUser({
-  id: 22,
-  username: "Chinmay",
-  room: "USA",
-})
-addUser({
-  id: 23,
-  username: "Gaurav",
-  room: "India",
-})
-addUser({
-  id: 24,
-  username: "Rajesh",
-  room: "Finland",
-})
-addUser({
-  id: 25,
-  username: "Amit",
-  room: "Africa",
-})
-
 const getUser = (id) => {
   const user = users.find((user) => user.id === id)
 
   return user
 }
-const getUsers = (room) => {
-  const user = users.filter((user) => {
-    user.room === room
-  })
+const getUsersInRoom = (room) => {
+  room = room.trim().toLowerCase()
+  const user = users.filter((user) => user.room === room)
   if (!user) {
     return "Wrong names"
   }
   return user
 }
-// console.log(getUser(22))
-console.log(getUsers("indi", "chinmay"))
+
+module.exports = {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+}
