@@ -33,7 +33,7 @@ const removeUser = (id) => {
 addUser({
   id: 22,
   username: "Chinmay",
-  room: "India",
+  room: "USA",
 })
 addUser({
   id: 23,
@@ -43,12 +43,12 @@ addUser({
 addUser({
   id: 24,
   username: "Rajesh",
-  room: "India",
+  room: "Finland",
 })
 addUser({
   id: 25,
   username: "Amit",
-  room: "India",
+  room: "Africa",
 })
 
 const getUser = (id) => {
