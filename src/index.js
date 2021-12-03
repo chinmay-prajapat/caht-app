@@ -3,6 +3,12 @@ const http = require("http")
 const express = require("express")
 const socketio = require("socket.io")
 const Filter = require("bad-words")
+const {
+  addUser,
+  getUser,
+  removeUser,
+  getUsersInRoom,
+} = require("./utils/users")
 const { generateMessage, generateLocationMessage } = require("./utils/messages")
 
 const app = express()
@@ -18,6 +24,7 @@ io.on("connection", (socket) => {
   console.log("New WebSocket connection")
 
   socket.on("join", ({ username, room }) => {
+    addUser({ id: socket.id })
     socket.join(room)
 
     socket.emit("message", generateMessage("Welcome!"))
