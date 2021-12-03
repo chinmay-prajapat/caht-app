@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
 
     socket.join(user.room)
 
-    socket.emit("message", generateMessage("Welcome!"))
+    socket.emit("message", generateMessage("Admin", "Welcome!"))
     socket.broadcast
       .to(room)
       .emit("message", generateMessage(`${username} has joined!`))
@@ -51,7 +51,7 @@ io.on("connection", (socket) => {
       return callback("Profanity is not allowed!")
     }
 
-    io.to(user.room).emit("message", generateMessage(message))
+    io.to(user.room).emit("message", generateMessage(user.username, message))
     callback()
   })
 
@@ -59,7 +59,8 @@ io.on("connection", (socket) => {
     const user = getUser(socket.id)
     io.to(user.room).emit(
       "locationMessage",
-      generateMessage(
+      generateLocationMessage(
+        user.username,
         `https://google.com/maps?q=${coords.latitude},${coords.longitude}`,
       ),
     )
@@ -72,7 +73,7 @@ io.on("connection", (socket) => {
     if (user) {
       io.to(user.room).emit(
         "message",
-        generateMessage(`${user.username} has left!`),
+        generateMessage("Admin", `${user.username} has left!`),
       )
     }
   })
